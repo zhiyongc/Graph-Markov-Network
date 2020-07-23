@@ -79,20 +79,6 @@ def loadDataset(dataset = None):
     print('Dataset loaded.')
     return speed_matrix, A
 
-
-# def StoreData(result_dict, model_name, train_result, test_result, directory, model, random_seed = 1024, save_model=True):
-#     result_dict[model_name] = {}
-#     result_dict[model_name]['train_loss'] = train_result[2]
-#     result_dict[model_name]['valid_loss'] = train_result[3] 
-#     result_dict[model_name]['MAE'] = test_result[3] 
-#     result_dict[model_name]['RMSE'] = test_result[4] 
-#     result_dict[model_name]['MAPE'] = test_result[5] 
-#     f = open(directory + '/gmn_log_rs_' + str(random_seed) + '.pkl', "wb")
-#     pickle.dump(result_dict,f)
-#     f.close()
-#     if save_model:
-#         torch.save(model.state_dict(), directory + '/' + model_name)
-
 def StoreData(model_name, train_result, test_result, directory, model, random_seed = 1024, save_model=True):
     
     if os.path.isfile(directory + '/gmn_log_rs_' + str(random_seed) + '.pkl'):
@@ -119,9 +105,6 @@ def StoreData(model_name, train_result, test_result, directory, model, random_se
 
         
 if __name__ == "__main__":
-    
-#     dataset == 'PEMS-BAY'
-#     missing_rate = 0.2
     
     parser = argparse.ArgumentParser()
 
@@ -260,118 +243,3 @@ if __name__ == "__main__":
     model, train_result = TrainModel(model, train_dataloader, valid_dataloader, optm = optm, learning_rate = learning_rate, patience = 5)
     test_result = TestModel(model, test_dataloader, max_speed)
     StoreData(model_name, train_result, test_result, directory, model, random_seed, save_model)
-    
-    
-
-#     # ANN
-#     importlib.reload(models)
-#     from models import ANN
-#     importlib.reload(utils)
-#     from utils import TrainModel, TestModel
-#     model_name = 'FCMN'
-#     print(model_name)
-#     model = ANN(A, layer = 10, gamma = 0.9)
-#     model, train_result = TrainModel(model, train_dataloader, valid_dataloader, optm = optm, learning_rate = learning_rate, patience = 5)
-#     test_result = TestModel(model, test_dataloader, max_speed)
-#     StoreData(result_dict, model_name, train_result, test_result, directory, model)
-
-#     # LSTM
-#     importlib.reload(models)
-#     from models import LSTM
-#     importlib.reload(utils)
-#     from utils import TrainModel, TestModel
-#     model_name = 'LSTM'
-#     model = LSTM(A.shape[0])
-#     model, train_result = TrainModel(model, train_dataloader, valid_dataloader, learning_rate = 1e-3, patience = 5)
-#     test_result = TestModel(model, test_dataloader, max_speed)
-#     StoreData(result_dict, model_name, train_result, test_result, directory, model)
-
-#     # LSTM-I
-#     importlib.reload(models)
-#     from models import LSTM
-#     importlib.reload(utils)
-#     from utils import TrainModel, TestModel
-#     model_name = 'LSTMI'
-#     model = LSTM(A.shape[0], imputation = True)
-#     model, train_result = TrainModel(model, train_dataloader, valid_dataloader, learning_rate = 1e-3, patience = 5)
-#     test_result = TestModel(model, test_dataloader, max_speed)
-#     StoreData(result_dict, model_name, train_result, test_result, directory, model)
-
-#     # LSTM-D
-#     import LSTMD
-#     importlib.reload(LSTMD)
-#     from LSTMD import LSTMD
-#     importlib.reload(utils)
-#     from utils import TrainModel, TestModel
-#     model_name = 'LSTMD'
-#     print(model_name)
-#     model = LSTMD(fea_size, fea_size, fea_size, X_mean)
-#     model, train_result = TrainModel(model, train_dataloader, valid_dataloader, learning_rate = 1e-3, patience = 5)
-#     test_result = TestModel(model, test_dataloader, max_speed)
-#     StoreData(result_dict, model_name, train_result, test_result, directory, model)
-
-#     # GRU
-#     importlib.reload(models)
-#     from models import GRU
-#     importlib.reload(utils)
-#     from utils import TrainModel, TestModel
-#     model_name = 'GRU'
-#     print(model_name)
-#     gru = GRU(A.shape[0])
-#     gru, train_result = TrainModel(gru, train_dataloader, valid_dataloader, learning_rate = 1e-3, patience = 5)
-#     test_result = TestModel(gru, test_dataloader, max_speed)
-#     StoreData(result_dict, model_name, train_result, test_result, directory, model)
-
-#     # GRU-I
-#     importlib.reload(models)
-#     from models import GRU
-#     importlib.reload(utils)
-#     from utils import TrainModel, TestModel
-#     model_name = 'GRUI'
-#     print(model_name)
-#     model = GRU(A.shape[0], imputation = True)
-#     model, train_result = TrainModel(model, train_dataloader, valid_dataloader, learning_rate = 1e-3, patience = 5)
-#     test_result = TestModel(model, test_dataloader, max_speed)
-#     StoreData(result_dict, model_name, train_result, test_result, directory, model)
-
-#     # GRU-D
-#     import GRUD
-#     importlib.reload(GRUD)
-#     from GRUD import GRUD
-#     importlib.reload(utils)
-#     from utils import TrainModel, TestModel
-#     model_name = 'GRUD'
-#     print(model_name)
-#     model = GRUD(fea_size, fea_size, fea_size, X_mean)
-#     model, train_result = TrainModel(model, train_dataloader, valid_dataloader, learning_rate = 1e-3, patience = 5)
-#     test_result = TestModel(model, test_dataloader, max_speed)
-#     StoreData(result_dict, model_name, train_result, test_result, directory, model)
-
-#     # Graph GRU-D
-#     import GGRUD
-#     importlib.reload(GGRUD)
-#     from GGRUD import GGRUD
-#     importlib.reload(utils)
-#     from utils import TrainModel, TestModel
-#     model_name = 'GGRUD'
-#     print(model_name)
-#     model = GGRUD(A, fea_size, fea_size, fea_size, X_mean)
-#     model, train_result = TrainModel(model, train_dataloader, valid_dataloader, learning_rate = 1e-3, patience = 5)
-#     test_result = TestModel(model, test_dataloader, max_speed)
-#     StoreData(result_dict, model_name, train_result, test_result, directory, model)
-
-#     # GCLSTM
-#     importlib.reload(models)
-#     from models import GCLSTM
-#     importlib.reload(utils)
-#     from utils import TrainModel, TestModel
-#     model_name = 'GCLSTM'
-#     print(model_name)
-#     model = GCLSTM(A)
-#     model, train_result = TrainModel(model, train_dataloader, valid_dataloader, learning_rate = 1e-2, patience = 5)
-#     test_result = TestModel(model, test_dataloader, max_speed)
-#     StoreData(result_dict, model_name, train_result, test_result, directory, model)
-
-
-
-

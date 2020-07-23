@@ -166,18 +166,6 @@ if __name__ == "__main__":
     from utils import TrainModel, TestModel
 
 
-#     # ANN
-#     importlib.reload(models)
-#     from models import ANN
-#     importlib.reload(utils)
-#     from utils import TrainModel, TestModel
-#     model_name = 'FCMN'
-#     print(model_name)
-#     model = ANN(A, layer = 7, gamma = 0.9)
-#     model, train_result = TrainModel(model, train_dataloader, valid_dataloader, learning_rate = 1e-2, patience = 5)
-#     test_result = TestModel(model, test_dataloader, max_speed)
-#     StoreData(result_dict, model_name, train_result, test_result, directory, model)
-
     # LSTM
     importlib.reload(models)
     from models import LSTM
@@ -264,19 +252,3 @@ if __name__ == "__main__":
     model, train_result = TrainModel(model, train_dataloader, valid_dataloader, learning_rate = learning_rate, patience = 5)
     test_result = TestModel(model, test_dataloader, max_speed)
     StoreData(result_dict, model_name, train_result, test_result, directory, model, random_seed, save_model)
-
-    # GCLSTM
-    importlib.reload(models)
-    from models import GCLSTM
-    importlib.reload(utils)
-    from utils import TrainModel, TestModel
-    model_name = 'GCLSTM'
-    print(model_name)
-    model = GCLSTM(A)
-    model, train_result = TrainModel(model, train_dataloader, valid_dataloader, learning_rate = learning_rate, patience = 5)
-    test_result = TestModel(model, test_dataloader, max_speed)
-    StoreData(result_dict, model_name, train_result, test_result, directory, model, random_seed, save_model)
-
-
-
-

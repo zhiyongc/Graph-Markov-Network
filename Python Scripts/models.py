@@ -16,6 +16,9 @@ else:
 
     
 class GMN(nn.Module):
+    '''
+    The new version of GMN, which is idendical to the one in the Jupyter Script version
+    '''
     def __init__(self, A, dtype, device, num_layer = 6, gamma = 0.9):
         super(GMN, self).__init__()
         self.gamma = gamma
@@ -64,6 +67,9 @@ class GMN(nn.Module):
     
 
 class GNN(nn.Module):
+    '''
+    The hard code version of GMN, which was used in the experimental testing stage.
+    '''
     def __init__(self, A, layer = 5, gamma = 0.9):
         
         super(GNN, self).__init__()
@@ -221,6 +227,7 @@ class SGNN(nn.Module):
             Y_hat += self.gamma**10 * (torch.mm(X[:,-10,:] * (1-M[:,-1,:]) * (1-M[:,-2,:]) * (1-M[:,-3,:]) * (1-M[:,-4,:]) * (1-M[:,-5,:]) * (1-M[:,-6,:]) * (1-M[:,-7,:]) * (1-M[:,-8,:])* (1-M[:,-9,:]), self.v.matmul(A10_diag).matmul(torch.t(self.v))))
         
         return Y_hat
+
     def reset_parameters(self):
         stdv = 1. / math.sqrt(self.n)
         self.A1.data.uniform_(-stdv, stdv)
@@ -233,4 +240,108 @@ class SGNN(nn.Module):
         self.A8.data.uniform_(-stdv, stdv)
         self.A9.data.uniform_(-stdv, stdv)
         self.A10.data.uniform_(-stdv, stdv)
+
+
+
+class LSTM(nn.Module):
+    def __init__(self, n, imputation = False):
+        """
+        cell_size is the size of cell_state.
+        hidden_size is the size of hidden_state, or say the output_state of each step
+        """
+        super(LSTM, self).__init__()
         
+        self.n = n
+        self.fl = nn.Linear(2 * n, n)
+        self.il = nn.Linear(2 * n, n)
+        self.ol = nn.Linear(2 * n, n)
+        self.Cl = nn.Linear(2 * n, n)
+        
+        self.imputation = imputation
+    
+    def step(self, x, h, C):
+        xh = torch.cat((x, h), 1)
+        f = F.sigmoid(self.fl(xh))
+        i = F.sigmoid(self.il(xh))
+        o = F.sigmoid(self.ol(xh))
+        C_tilde = F.tanh(self.Cl(xh))
+        C = f * C + i * C_tilde
+        h = o * F.tanh(C)
+        
+        return h, C
+    
+    def forward(self, input):
+        batch_size = input.size(0)
+        type_size = input.size(1)
+        step_size = input.size(2)
+        spatial_size = input.size(3)
+
+        X = torch.squeeze(input[:,0,:,:])
+        M = torch.squeeze(input[:,1,:,:])
+#         Delta = torch.squeeze(input[:,2,:,:])
+#         X_last_obsv = torch.squeeze(input[:,3,:,:])
+        
+        h, C = self.initHidden(batch_size, spatial_size)
+        
+        for i in range(step_size):
+            if self.imputation:
+                x = X[:,i,:] * M[:,i,:] + h * (1 - M[:,i,:])
+            else:
+                x = X[:,i,:] 
+            h, C = self.step(x, h, C)  
+        return h
+    
+    def initHidden(self, batch_size, spatial_size):
+        Hidden_State = torch.zeros((batch_size, spatial_size), dtype = dtype, device = device)
+        Cell_State = torch.zeros((batch_size, spatial_size), dtype = dtype, device = device)
+        return Hidden_State, Cell_State
+    
+    
+class GRU(nn.Module):
+    def __init__(self, n, imputation = False):
+        """
+        cell_size is the size of cell_state.
+        hidden_size is the size of hidden_state, or say the output_state of each step
+        """
+        super(GRU, self).__init__()
+        
+        self.n = n
+        self.zl = nn.Linear(2 * n, n)
+        self.rl = nn.Linear(2 * n, n)
+        self.hl = nn.Linear(2 * n, n)
+        
+        self.imputation = imputation
+    
+    def step(self, x, h):
+        xh = torch.cat((x, h), 1)
+        z = F.sigmoid(self.zl(xh))
+        r = F.sigmoid(self.rl(xh))
+        combined_r = torch.cat((x, r * h), 1)
+        h_tilde = F.tanh(self.hl(combined_r))
+        h = (1 - z) * h + z * h_tilde
+        return h
+    
+    def forward(self, input):
+        batch_size = input.size(0)
+        type_size = input.size(1)
+        step_size = input.size(2)
+        spatial_size = input.size(3)
+
+        X = torch.squeeze(input[:,0,:,:])
+        M = torch.squeeze(input[:,1,:,:])
+#         Delta = torch.squeeze(input[:,2,:,:])
+#         X_last_obsv = torch.squeeze(input[:,3,:,:])
+        
+        h = self.initHidden(batch_size, spatial_size)
+        
+        for i in range(step_size):
+            if self.imputation:
+                x = X[:,i,:] * M[:,i,:] + h * (1 - M[:,i,:])
+            else:
+                x = X[:,i,:] 
+            h = self.step(x, h)  
+        return h
+    
+    def initHidden(self, batch_size, spatial_size):
+        Hidden_State = torch.zeros((batch_size, spatial_size), dtype = dtype, device = device)
+        return Hidden_State
