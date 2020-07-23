@@ -1,5 +1,5 @@
 # Graph Markov Network
-> [Graph Markov Network for Traffic Forecasting with Missing Data](https://zhiyongcui.com/blog/2020/07/16/graph-markov-network.html) 
+> Code for this post: [Graph Markov Network for Traffic Forecasting with Missing Data](https://zhiyongcui.com/blog/2020/07/16/graph-markov-network.html) 
 ##### Table of Contents
 * [Introduction](#introduction)
 * [Usage](#usage)
