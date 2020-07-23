@@ -14,13 +14,13 @@ For most details of the Graph Markov Network or the Graph Markov Process, you ca
 ### Data
 
 Three datasets are used to test the model:
-* PEMS-BAY:
-* METR-LA:
-* INRIX_SEA:
+* PEMS-BAY: This dataset named as PEMS-BAY is collected by California Transportation Agencies (CalTrans) Performance Measurement System (PeMS). This dataset contains the speed information of 325 sensors in the Bay Area lasting for six months ranging from Jan 1st, 2017 to Jun 30th, 2017. The interval of time steps is 5-minutes. The total number of observed traffic data points is 16,941,600. 
+* METR-LA: This dataset is collected from loop detectors on the freeway of Los Angeles County. This dataset contains the speed information of 207 sensors lasting for 4 months ranging from Mar 1st, 2012 to Jun 30th, 2012. The interval of time steps is 5-minutes. The total number of observed traffic data points is 6,519,002.
+* INRIX_SEA: This dataset is collected by the INRIX company from multiple data sources, including GPS probes, road sensors, and cell phone data. This dataset contains the speed information of the traffic network in the Seattle downtown area consisting of 725 road segments. The traffic network covers both freeways and urban roadways. The dataset covers a one-year period from Jan 1st, 2012 to Dec 31st, 2012. The interval of time steps is 5-minutes. The total number of observed traffic data points is 76,212,000.
 
-The PEMS-BAY and METR-LA data is acquired from the [DCRNN Repo](https://github.com/liyaguang/DCRNN). The INRIX-SEA will soom be released.
+The PEMS-BAY and METR-LA data is acquired from the [DCRNN Repo](https://github.com/liyaguang/DCRNN). 
 
-The datasets used in this project can be download from this [link](https://drive.google.com/drive/folders/1Y0wBUF0vBS9KeG5VjRAJy_gySBJqmA-P?usp=sharing)
+The datasets used in the experiments can be download from this [link](https://drive.google.com/drive/folders/1Y0wBUF0vBS9KeG5VjRAJy_gySBJqmA-P?usp=sharing). After the datasets are downloaded, the data path in the code should be changed accordingly.
 
 ### Usage
 
@@ -28,7 +28,7 @@ The datasets used in this project can be download from this [link](https://drive
 [1] Cui, Zhiyong, Longfei Lin, Ziyuan Pu, and Yinhai Wang. "[Graph markov network for traffic forecasting with missing data.](https://www.sciencedirect.com/science/article/pii/S0968090X20305866)" Transportation Research Part C: Emerging Technologies 117 (2020): 102671. \[[arXiv](https://arxiv.org/abs/1912.05457)\]
 
 ### BibTeX
-You are welcomed to cite the following paper if the source code is helpful. 
+If you find this repository, e.g., the code and the datasets, useful in your research, please cite the following paper:
 ```
   @article{cui2020graph,
     title={Graph markov network for traffic forecasting with missing data},
