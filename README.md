@@ -37,7 +37,7 @@ The Jupyter Scripts is used for quick demonstrations. Two files are included in 
 * [GraphMarkovNet.ipynb](https://github.com/zhiyongc/GraphMarkovNetwork/blob/master/Jupyter%20Scripts/GraphMarkovNet.ipynb): The GMN and its spectral version (SGMN) are implemented, trained, and tested in this Jupyter Notebook document.
 * [utils.py](https://github.com/zhiyongc/GraphMarkovNetwork/blob/master/Jupyter%20Scripts/utils.py): This script includes data loading, training, and testing functions.
 
-**To quickly run and test GMN/SGMN, the Jupyter Notebook version is recommended.**
+To quickly run and test GMN/SGMN, the **Jupyter Notebook version** is recommended.
 
 ### Run Python Scripts for Experiments
 
