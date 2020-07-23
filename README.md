@@ -1,5 +1,5 @@
 # Graph Markov Network
-> Graph Markov Network for Traffic Forecasting with Missing Data
+> [Graph Markov Network for Traffic Forecasting with Missing Data](https://zhiyongcui.com/blog/2020/07/16/graph-markov-network.html)
 
 ## Introduction
 This is the github repo for sharing the code for implementing the Graph Markov Network (GMN) proposed in [1]. The GMN is proposed to solve the traffic forecasting problems while the traffic data has missing values. The Graph Markov Model is designed based on the Graph Markov Process (GMP), which provides a new perspective to model the transition process of the spatial-temporal data. 
@@ -8,7 +8,9 @@ The idea of GMN is very simple and easy to be implemented. The structure of GMN 
 
 <p align="left"><img width="100%" src="figures/GMP.png"/></p>
 
-For most details of the Graph Markov Network or the Graph Markov Process, you can easily refer to this \[[Post](https://zhiyongcui.com/blog/2020/07/16/graph-markov-network.html)\] or refer to the paper \[[TR Part C](https://www.sciencedirect.com/science/article/pii/S0968090X20305866)\] or \[[arXiv](https://arxiv.org/abs/1912.05457)\].
+For most details, you can refer to the paper \[[TR Part C](https://www.sciencedirect.com/science/article/pii/S0968090X20305866)\] or \[[arXiv](https://arxiv.org/abs/1912.05457)\].
+
+The ideas and the methodology of GMP and GMN are detailed in this *[Post](https://zhiyongcui.com/blog/2020/07/16/graph-markov-network.html)*
 
 ## Usage
 
