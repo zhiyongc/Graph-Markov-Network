@@ -10,7 +10,7 @@ The idea of GMN is very simple and easy to be implemented. The structure of GMN 
 
 For most details, you can refer to the paper \[[TR Part C](https://www.sciencedirect.com/science/article/pii/S0968090X20305866)\] or \[[arXiv](https://arxiv.org/abs/1912.05457)\].
 
-The ideas and the methodology of GMP and GMN are detailed in this *[Post](https://zhiyongcui.com/blog/2020/07/16/graph-markov-network.html)*
+The ideas and the methodology of GMP and GMN are detailed in this **[Post](https://zhiyongcui.com/blog/2020/07/16/graph-markov-network.html)**.
 
 ## Usage
 
