@@ -1,6 +1,18 @@
 # Graph Markov Network
 > [Graph Markov Network for Traffic Forecasting with Missing Data](https://zhiyongcui.com/blog/2020/07/16/graph-markov-network.html)
 
+Table of Contents
+=================
+<!--ts-->
+* [Introduction](#introduction)
+* [Usage](#usage)
+     * [Requirements](#requirements)
+     * [Data Preparation](#data-preparation)
+     * [Run Jupyter Scripts for Demonstration](#run-jupyter-scripts-for-demonstration)
+     * [Run Python Scripts for Experiments](#run-python-scripts-for-experiments)
+* [Reference](#reference)
+* [Citation](#citation)
+
 ## Introduction
 This is the github repo for sharing the code for implementing the Graph Markov Network (GMN) proposed in [1]. The GMN is proposed to solve the traffic forecasting problems while the traffic data has missing values. The Graph Markov Model is designed based on the Graph Markov Process (GMP), which provides a new perspective to model the transition process of the spatial-temporal data. 
 
@@ -33,7 +45,7 @@ The PEMS-BAY and METR-LA data is acquired from the [DCRNN Repo](https://github.c
 
 All three ready-to-use datasets can be download from this **[LINK](https://drive.google.com/drive/folders/1Y0wBUF0vBS9KeG5VjRAJy_gySBJqmA-P?usp=sharing)**. After the datasets are downloaded, the data path should be changed accordingly to run the codes.
 
-### Run Jupyter Scripts for demonstration
+### Run Jupyter Scripts for Demonstration
 
 The Jupyter Scripts is used for quick demonstrations. Two files are included in the Jupyter Scripts folder:
 * [GraphMarkovNet.ipynb](https://github.com/zhiyongc/GraphMarkovNetwork/blob/master/Jupyter%20Scripts/GraphMarkovNet.ipynb): The GMN and its spectral version (SGMN) are implemented, trained, and tested in this Jupyter Notebook document.
@@ -61,7 +73,7 @@ python Exp_GMN.py -d $dataset -m $missing_rate -o $optimizer -l $learning_rate -
 ## Reference
 [1] Cui, Zhiyong, Longfei Lin, Ziyuan Pu, and Yinhai Wang. "[Graph markov network for traffic forecasting with missing data.](https://www.sciencedirect.com/science/article/pii/S0968090X20305866)" Transportation Research Part C: Emerging Technologies 117 (2020): 102671. \[[arXiv](https://arxiv.org/abs/1912.05457)\]
 
-## BibTeX
+## Citation
 If you find this repository, e.g., the code and the datasets, useful in your research, please cite the following paper:
 ```
   @article{cui2020graph,
