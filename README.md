@@ -37,11 +37,12 @@ The requirements.txt listed the required packages.
 
 ### Data Preparation
 
-Three datasets are used to test the GMN in the experiments:
+Three datasets are used to test the GMN in the experiments
+<!-- :
 * PEMS-BAY: This dataset named as PEMS-BAY is collected by California Transportation Agencies (CalTrans) Performance Measurement System (PeMS). This dataset contains the speed information of 325 sensors in the Bay Area lasting for six months ranging from Jan 1st, 2017 to Jun 30th, 2017. 
 * METR-LA: This dataset is collected from loop detectors on the freeway of Los Angeles County. This dataset contains the speed information of 207 sensors lasting for 4 months ranging from Mar 1st, 2012 to Jun 30th, 2012. 
 * INRIX_SEA: This dataset contains the speed information of the traffic network in the Seattle downtown area consisting of 725 road segments. The traffic network covers both freeways and urban roadways. The dataset covers a one-year period from Jan 1st, 2012 to Dec 31st, 2012. 
-
+-->
 The PEMS-BAY and METR-LA data is acquired from the [DCRNN Repo](https://github.com/liyaguang/DCRNN). 
 
 All three ready-to-use datasets can be download from this **[LINK](https://drive.google.com/drive/folders/1Y0wBUF0vBS9KeG5VjRAJy_gySBJqmA-P?usp=sharing)**. After the datasets are downloaded, the data path should be changed accordingly to run the codes.
