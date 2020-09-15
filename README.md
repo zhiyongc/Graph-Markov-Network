@@ -10,9 +10,9 @@
 * [Reference](#reference)
 * [Citation](#citation)
 
-## Before Introduction
-
-The ideas, methodologies, and implementations of the Graph Markov Network is quite simple!
+<!-- ## Before Introduction
+The ideas, methodologies, and implementations of the Graph Markov Network is quite simple! 
+-->
 
 ## Introduction
 This is the github repo for sharing the code for implementing the Graph Markov Network (GMN) proposed in [1]. The GMN is proposed to solve the traffic forecasting problems while the traffic data has missing values. The Graph Markov Model is designed based on the Graph Markov Process (GMP), which provides a new perspective to model the transition process of the spatial-temporal data. 
